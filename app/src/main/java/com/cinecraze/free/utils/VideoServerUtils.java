@@ -37,7 +37,8 @@ public class VideoServerUtils {
         "streamwish.to", "doodstream.com", "mixdrop.co", "streamtape.com",
         "vidcloud.co", "upcloud.to", "nova.video", "streamhub.to",
         // Added
-        "vidsrc.xyz", "vidsrc.me", "embed.su", "vidlink.pro", "autoembed.cc", "player.autoembed.cc"
+        "vidsrc.xyz", "vidsrc.me", "embed.su", "vidlink.pro", "autoembed.cc", "player.autoembed.cc",
+        "movie-fcs.fwh.is"  // Add this line
     };
     
     // Video quality options
@@ -128,6 +129,8 @@ public class VideoServerUtils {
             return addVidlinkProParameters(originalUrl);
         } else if (originalUrl.contains("autoembed.cc") || originalUrl.contains("player.autoembed.cc")) {
             return addAutoembedParameters(originalUrl);
+        } else if (originalUrl.contains("movie-fcs.fwh.is")) {
+            return addMovieFcsParameters(originalUrl);
         }
         
         return originalUrl;
@@ -262,6 +265,23 @@ public class VideoServerUtils {
         return enhancedUrl.toString();
     }
     
+    // Add this method in VideoServerUtils.java
+private static String addMovieFcsParameters(String url) {
+    StringBuilder enhancedUrl = new StringBuilder(url);
+
+    if (!url.contains("?")) {
+        enhancedUrl.append("?");
+    } else {
+        enhancedUrl.append("&");
+    }
+
+    enhancedUrl.append("verified=1")
+              .append("&cache=1")
+              .append("&user_agent=" + encodeUrl(getUserAgent()));
+
+    Log.d(TAG, "Enhanced Movie-FCS URL: " + enhancedUrl.toString());
+    return enhancedUrl.toString();
+}
     /**
      * Add VidJoy.pro parameters for better reliability
      */
@@ -776,6 +796,7 @@ public class VideoServerUtils {
         if (url.contains("doodstream.com")) return "DoodStream";
         if (url.contains("mixdrop.co")) return "MixDrop";
         if (url.contains("streamtape.com")) return "StreamTape";
+        if (url.contains("movie-fcs.fwh.is")) return "Movie-FCS";
         // Added
         if (url.contains("vidsrc.xyz")) return "VidSrc.xyz";
         if (url.contains("embed.su")) return "Embed.su";
@@ -846,7 +867,7 @@ public class VideoServerUtils {
      * Get user agent for better compatibility
      */
     public static String getUserAgent() {
-        return "Mozilla/5.0 (Linux; Android 10; SM-G975F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Mobile Safari/537.36";
+        return "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36";
     }
     
     /**
