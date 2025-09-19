@@ -1,0 +1,35 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme with Netflix colors -->
+    <style name="Theme.CineCraze" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Netflix Primary brand color. -->
+        <item name="colorPrimary">@color/netflix_red</item>
+        <item name="colorPrimaryVariant">@color/netflix_black</item>
+        <item name="colorOnPrimary">@color/netflix_white</item>
+        <!-- Netflix Secondary brand color. -->
+        <item name="colorSecondary">@color/netflix_light_gray</item>
+        <item name="colorSecondaryVariant">@color/netflix_gray</item>
+        <item name="colorOnSecondary">@color/netflix_white</item>
+        <!-- Netflix Background colors -->
+        <item name="android:colorBackground">@color/netflix_black</item>
+        <item name="colorSurface">@color/netflix_dark_gray</item>
+        <item name="colorOnSurface">@color/netflix_white</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">@android:color/transparent</item>
+        <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">true</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/netflix_light_gray</item>
+        <item name="colorControlActivated">@color/gold</item>
+    </style>
+
+    <style name="Theme.CineCraze.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.CineCraze.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Theme.CineCraze.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+</resources>

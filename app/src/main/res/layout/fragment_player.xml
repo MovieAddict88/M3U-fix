@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black">
+
+    <!-- Player Container - can hold both ExoPlayer and WebView -->
+    <FrameLayout
+        android:id="@+id/player_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.exoplayer2.ui.PlayerView
+            android:id="@+id/video_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:controller_layout_id="@layout/custom_exo_player_control_view"
+            app:resize_mode="fit"
+            app:surface_type="texture_view"
+            app:use_controller="true" />
+
+    </FrameLayout>
+
+    <!-- Back Button -->
+    <ImageView
+        android:id="@+id/image_view_exo_player_back"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_margin="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:padding="12dp"
+        android:src="@drawable/ic_arrow_back_white_24dp"
+        android:contentDescription="Back" />
+
+    <!-- Live Indicator -->
+    <TextView
+        android:id="@+id/text_view_exo_player_live"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="16dp"
+        android:background="@drawable/live_indicator_background"
+        android:padding="8dp"
+        android:text="LIVE"
+        android:textColor="@android:color/white"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+    <!-- Subtitle Loading Text -->
+    <TextView
+        android:id="@+id/text_view_exo_player_loading_subtitles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/subtitle_background"
+        android:padding="8dp"
+        android:text="Loading subtitles..."
+        android:textColor="@android:color/white"
+        android:visibility="gone" />
+
+    <!-- Player Controls Container -->
+    <RelativeLayout
+        android:id="@+id/payer_pause_play"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Center Controls -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/image_view_exo_player_replay_10"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_margin="16dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="16dp"
+                android:src="@drawable/ic_replay_10_white_24dp"
+                android:contentDescription="Replay 10 seconds" />
+
+            <ImageView
+                android:id="@+id/image_view_exo_player_forward_10"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_margin="16dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="16dp"
+                android:src="@drawable/ic_forward_10_white_24dp"
+                android:contentDescription="Forward 10 seconds" />
+
+        </LinearLayout>
+
+        <!-- Top Right Controls -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="16dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/image_view_exo_player_subtitles"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_margin="8dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="12dp"
+                android:src="@drawable/ic_subtitles_white_24dp"
+                android:contentDescription="Subtitles" />
+
+            <ImageView
+                android:id="@+id/image_view_exo_player_rotation"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_margin="8dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="12dp"
+                android:src="@drawable/ic_screen_rotation_white_24dp"
+                android:contentDescription="Rotate screen" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <!-- Duration Display (for non-live content) -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="80dp"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/exo_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/subtitle_background"
+            android:padding="4dp"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/exo_live"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/live_indicator_background"
+            android:padding="4dp"
+            android:text="LIVE"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <!-- Subtitle Selection Dialog -->
+    <RelativeLayout
+        android:id="@+id/relative_layout_subtitles_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/dialog_background"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/dialog_background"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <!-- Dialog Header -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Subtitle Settings"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/image_view_dialog_source_close"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_close_white_24dp"
+                    android:contentDescription="Close" />
+
+            </LinearLayout>
+
+            <!-- Subtitle On/Off Toggle -->
+            <TextView
+                android:id="@+id/text_view_dialog_subtitles_on_off"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/selector_button"
+                android:gravity="center"
+                android:text="Subtitles: ON"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+            <!-- Languages List -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Languages:"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_comment_dialog_languages"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginTop="8dp" />
+
+            <!-- Subtitle Quality List -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Quality:"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_comment_dialog_subtitles"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="8dp" />
+
+            <ProgressBar
+                android:id="@+id/progress_bar_comment_dialog_subtitles"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:visibility="gone" />
+
+            <!-- Text Size Controls -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Size:"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/image_view_dialog_source_less"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="16dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_remove_white_24dp"
+                    android:contentDescription="Decrease size" />
+
+                <TextView
+                    android:id="@+id/text_view_dialog_source_size_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Normal"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/image_view_dialog_source_plus"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_add_white_24dp"
+                    android:contentDescription="Increase size" />
+
+            </LinearLayout>
+
+            <!-- Color Pickers -->
+            <RelativeLayout
+                android:id="@+id/relative_layout_dialog_source_text_color_picker"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/selector_button">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="16dp"
+                    android:text="Text Color"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relative_layout_dialog_source_background_color_picker"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/selector_button">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="16dp"
+                    android:text="Background Color"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

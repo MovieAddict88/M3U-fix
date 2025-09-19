@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+     xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_height="match_parent"
+     android:layout_width="match_parent"
+     android:background="@android:color/black"
+     android:fitsSystemWindows="false"
+     tools:context=".MainActivity">
+
+    <LinearLayout
+         android:layout_height="64dp"
+         android:layout_width="match_parent"
+         android:visibility="gone"
+         android:elevation="12dp"
+         android:orientation="horizontal"
+         android:paddingStart="20dp"
+         android:layout_marginTop="24dp"
+         android:layout_gravity="top"
+         android:paddingEnd="20dp"
+         android:gravity="center_vertical"
+         android:background="@drawable/search_bar_background"
+         android:paddingBottom="8dp"
+         android:id="@+id/search_layout"
+         android:paddingTop="8dp">
+
+        <ImageView
+             android:layout_height="24dp"
+             android:layout_width="24dp"
+             android:src="@drawable/ic_search"
+             android:layout_marginEnd="12dp"
+             android:alpha="0.7"
+             android:tint="@android:color/white" />
+
+        <com.google.android.material.textfield.TextInputLayout
+             android:layout_height="48dp"
+             android:layout_width="0dp"
+             android:layout_marginEnd="12dp"
+             app:hintEnabled="false"
+             app:boxCornerRadiusBottomEnd="24dp"
+             app:boxCornerRadiusTopStart="24dp"
+             app:boxStrokeWidth="0dp"
+             app:boxCornerRadiusTopEnd="24dp"
+             app:boxCornerRadiusBottomStart="24dp"
+             app:boxStrokeWidthFocused="0dp"
+             app:boxBackgroundColor="#33FFFFFF"
+             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+             app:boxBackgroundMode="filled"
+             android:layout_weight="1">
+
+            <AutoCompleteTextView
+                 android:layout_height="wrap_content"
+                 android:layout_width="match_parent"
+                 android:imeOptions="actionSearch"
+                 android:textSize="16sp"
+                 android:textColor="@android:color/white"
+                 android:completionThreshold="1"
+                 android:paddingStart="16dp"
+                 android:paddingEnd="16dp"
+                 android:background="@android:color/transparent"
+                 android:hint="Search movies, series..."
+                 android:textColorHint="#99FFFFFF"
+                 android:paddingBottom="12dp"
+                 android:inputType="text"
+                 android:id="@+id/search_bar"
+                 android:paddingTop="12dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageView
+             android:layout_height="32dp"
+             android:layout_width="32dp"
+             android:src="@drawable/ic_close"
+             android:background="?android:attr/selectableItemBackgroundBorderless"
+             android:alpha="0.8"
+             android:padding="6dp"
+             android:tint="@android:color/white"
+             android:id="@+id/close_search_icon" />
+
+    </LinearLayout>
+
+    <androidx.viewpager2.widget.ViewPager2
+         android:layout_height="match_parent"
+         android:layout_width="match_parent"
+         android:layout_marginBottom="60dp"
+         app:layout_behavior="@string/appbar_scrolling_view_behavior"
+         android:id="@+id/main_viewpager" />
+
+    <LinearLayout
+         android:layout_height="wrap_content"
+         android:layout_width="match_parent"
+         android:layout_gravity="bottom">
+
+        <com.gauravk.bubblenavigation.BubbleNavigationConstraintView
+             android:layout_height="wrap_content"
+             android:layout_width="match_parent"
+             android:background="@color/dark_gray"
+             android:paddingRight="10dp"
+             android:elevation="0dp"
+             android:paddingBottom="8dp"
+             android:paddingLeft="10dp"
+             app:hideOnScroll="true"
+             app:bnc_mode="inside"
+             android:id="@+id/bottom_navigation"
+             android:paddingTop="8dp">
+
+            <com.gauravk.bubblenavigation.BubbleToggleView
+                 android:layout_height="wrap_content"
+                 android:layout_width="wrap_content"
+                 app:bt_colorActive="@android:color/black"
+                 app:bt_iconWidth="20dp"
+                 app:bt_title="Home"
+                 app:bt_colorInactive="@android:color/black"
+                 app:bt_shape="@drawable/bg_background_yellow"
+                 app:bt_iconHeight="20dp"
+                 app:bt_icon="@drawable/ic_home"
+                 android:id="@+id/nav_home" />
+
+            <com.gauravk.bubblenavigation.BubbleToggleView
+                 android:layout_height="wrap_content"
+                 android:layout_width="wrap_content"
+                 app:bt_colorActive="@android:color/white"
+                 app:bt_iconWidth="20dp"
+                 app:bt_title="Movies"
+                 app:bt_colorInactive="@android:color/white"
+                 app:bt_shape="@drawable/bg_background_red"
+                 app:bt_iconHeight="20dp"
+                 app:bt_icon="@drawable/ic_movie"
+                 android:id="@+id/nav_movies" />
+
+            <com.gauravk.bubblenavigation.BubbleToggleView
+                 android:layout_height="wrap_content"
+                 android:layout_width="wrap_content"
+                 app:bt_colorActive="@android:color/white"
+                 app:bt_iconWidth="20dp"
+                 app:bt_title="Series"
+                 app:bt_colorInactive="@android:color/white"
+                 app:bt_shape="@drawable/bg_background_green"
+                 app:bt_iconHeight="20dp"
+                 app:bt_icon="@drawable/ic_series"
+                 android:id="@+id/nav_series" />
+
+            <com.gauravk.bubblenavigation.BubbleToggleView
+                 android:layout_height="wrap_content"
+                 android:layout_width="wrap_content"
+                 app:bt_colorActive="@android:color/white"
+                 app:bt_iconWidth="20dp"
+                 app:bt_title="Live"
+                 app:bt_colorInactive="@android:color/white"
+                 app:bt_shape="@drawable/bg_background_purple"
+                 app:bt_iconHeight="20dp"
+                 app:bt_icon="@drawable/ic_live"
+                 android:id="@+id/nav_live" />
+
+            <com.gauravk.bubblenavigation.BubbleToggleView
+                 android:layout_height="wrap_content"
+                 android:layout_width="wrap_content"
+                 app:bt_colorActive="@android:color/white"
+                 app:bt_iconWidth="20dp"
+                 app:bt_title="Downloads"
+                 app:bt_colorInactive="@android:color/white"
+                 app:bt_shape="@drawable/bg_background_green"
+                 app:bt_iconHeight="20dp"
+                 app:bt_icon="@drawable/ic_download"
+                 android:id="@+id/nav_downloads" />
+
+        </com.gauravk.bubblenavigation.BubbleNavigationConstraintView>
+
+    </LinearLayout>
+
+    <ProgressBar
+         android:layout_height="wrap_content"
+         android:layout_width="wrap_content"
+         android:visibility="gone"
+         android:id="@+id/progress_bar"
+         android:layout_gravity="center" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+         android:layout_height="wrap_content"
+         android:layout_width="wrap_content"
+         android:layout_marginEnd="16dp"
+         android:src="@drawable/ic_search"
+         app:backgroundTint="#80000000"
+         android:layout_marginTop="18dp"
+         app:borderWidth="1dp"
+         android:layout_gravity="top|end"
+         android:contentDescription="Search"
+         app:tint="@android:color/white"
+         app:elevation="8dp"
+         android:translationZ="10dp"
+         app:fabSize="mini"
+         android:id="@+id/floating_search_icon" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

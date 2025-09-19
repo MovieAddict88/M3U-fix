@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layoutDirection="ltr"
+    android:id="@+id/relative_layout_dialog_server_close"
+    android:layout_height="match_parent">
+    
+    <RelativeLayout
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/dialog_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        
+        <!-- Dialog Title -->
+        <TextView
+            android:id="@+id/dialog_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Server"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:paddingBottom="16dp" />
+        
+        <!-- Server List -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycle_view_dialog_servers"
+            android:layout_below="@id/dialog_title"
+            android:clipToPadding="false"
+            android:clipChildren="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxHeight="400dp" />
+            
+    </RelativeLayout>
+</RelativeLayout>

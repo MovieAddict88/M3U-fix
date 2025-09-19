@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    android:fitsSystemWindows="false">
+
+    <!-- Carousel ViewPager -->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/carousel_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_gravity="top"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Main Content with SwipeRefreshLayout -->
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="188dp"
+        android:layout_marginBottom="20dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!-- Filter Buttons Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="12dp"
+                android:gravity="center"
+                android:background="#1A000000">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_genre_filter"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="36dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:text="Genre"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp"
+                    app:strokeColor="@android:color/white"
+                    app:strokeWidth="1dp"
+                    app:cornerRadius="18dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_country_filter"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="36dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:text="Country"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp"
+                    app:strokeColor="@android:color/white"
+                    app:strokeWidth="1dp"
+                    app:cornerRadius="18dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_year_filter"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="36dp"
+                    android:layout_weight="1"
+                    android:text="Year"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp"
+                    app:strokeColor="@android:color/white"
+                    app:strokeWidth="1dp"
+                    app:cornerRadius="18dp" />
+
+            </LinearLayout>
+
+
+            <!-- RecyclerView for Movies -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingBottom="60dp"
+                android:clipToPadding="false"
+                tools:listitem="@layout/item_grid" />
+
+        </LinearLayout>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <!-- Floating Pagination Layout -->
+    <LinearLayout
+        android:id="@+id/floating_pagination_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/floating_pagination_background"
+        android:elevation="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="8dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/btn_previous_page"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="16dp"
+            android:alpha="0.3"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:padding="6dp"
+            android:src="@drawable/ic_arrow_left"
+            android:tint="@android:color/white" />
+
+        <ImageView
+            android:id="@+id/btn_next_page"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:alpha="1.0"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:padding="6dp"
+            android:src="@drawable/ic_arrow_right"
+            android:tint="@android:color/white" />
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_view_mode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        app:srcCompat="@drawable/ic_grid_view"
+        app:backgroundTint="@color/primary"
+        app:tint="@android:color/white"
+        app:fabSize="normal"
+        app:borderWidth="0dp"
+        android:contentDescription="Toggle View Mode" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

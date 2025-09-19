@@ -1,0 +1,73 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.cinecraze.free'
+    compileSdk 34 
+
+    defaultConfig {
+        applicationId "com.cinecraze.free"
+        minSdk 21
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+    }
+
+    signingConfigs {
+        release {
+            storeFile = file("../key/fagmmmu.jks")
+            storePassword = "fagmmmu2025"
+            keyPassword = "fagmmmu2025"
+            keyAlias = "RLT"
+            enableV1Signing = true
+            enableV2Signing = true
+            enableV3Signing = true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled = true
+            shrinkResources = true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig = signingConfigs.release
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.aar'])
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    // Added dependencies
+    implementation 'androidx.recyclerview:recyclerview:1.3.2'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.16.0'
+    implementation 'com.google.android.exoplayer:exoplayer:2.19.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.google.code.gson:gson:2.10.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
+    
+    // Room database dependencies
+    implementation 'androidx.room:room-runtime:2.6.1'
+    annotationProcessor 'androidx.room:room-compiler:2.6.1'
+    
+    // Bubble Navigation - same as working reference
+    //implementation 'com.gauravk.bubblenavigation:bubblenavigation:1.0.7'
+    
+    // ConstraintLayout support
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    
+    // SwipeRefreshLayout for pull-to-refresh functionality
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+}

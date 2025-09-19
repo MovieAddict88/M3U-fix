@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="32dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CineCraze Stream - Enhanced Features Test"
+        android:textAppearance="?attr/textAppearanceHeadline5"
+        android:gravity="center"
+        android:layout_marginBottom="32dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test the enhanced DetailsActivity with sample data"
+        android:textAppearance="?attr/textAppearanceBody1"
+        android:gravity="center"
+        android:layout_marginBottom="32dp" />
+
+    <Button
+        android:id="@+id/test_movie_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Test Movie Details"
+        android:textAllCaps="false"
+        android:layout_marginBottom="16dp"
+        style="@style/Widget.MaterialComponents.Button" />
+
+    <Button
+        android:id="@+id/test_tv_series_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Test TV Series Details"
+        android:textAllCaps="false"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Features to test:&#10;• Server spinner selection&#10;• Season spinner for TV series&#10;• Episode list with horizontal scrolling&#10;• Server info display&#10;• Content type detection"
+        android:textAppearance="?attr/textAppearanceCaption"
+        android:gravity="center"
+        android:layout_marginTop="32dp"
+        android:textColor="?android:attr/textColorSecondary" />
+
+</LinearLayout>

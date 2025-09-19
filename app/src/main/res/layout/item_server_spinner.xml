@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="10dp"
+    android:gravity="center_vertical">
+
+    <!-- Left: Server icon -->
+    <ImageView
+        android:id="@+id/image_view_server_type_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/episode_item_background"
+        android:padding="10dp"
+        android:tint="@android:color/white"
+        android:src="@drawable/ic_media_play" />
+
+    <!-- Middle: Titles/Info -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp">
+
+        <TextView
+            android:id="@+id/text_view_server_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:text="Server Name" />
+
+        <TextView
+            android:id="@+id/text_view_server_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/cinemaX_white_text"
+            android:textSize="11sp"
+            android:text="Auto Quality" />
+    </LinearLayout>
+
+    <!-- Quality pill -->
+    <TextView
+        android:id="@+id/text_view_server_quality"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="HD"
+        android:textStyle="bold"
+        android:textSize="10sp"
+        android:textColor="@android:color/black"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:background="@drawable/bg_background_green" />
+
+    <!-- Right: Action cluster (Play + optional Download) -->
+    <LinearLayout
+        android:id="@+id/action_cluster"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:orientation="horizontal"
+        android:background="@drawable/floating_search_background"
+        android:padding="4dp">
+
+        <ImageView
+            android:id="@+id/image_view_server_play"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="10dp"
+            android:tint="@android:color/white"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_play_arrow" />
+
+        <ImageView
+            android:id="@+id/image_view_server_download"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="10dp"
+            android:tint="@android:color/white"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_download"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <!-- Hidden legacy views for compatibility -->
+    <ImageView
+        android:id="@+id/image_view_server_premium"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/server_name"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone" />
+
+    <View
+        android:id="@+id/selected_indicator"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone" />
+
+</LinearLayout>
